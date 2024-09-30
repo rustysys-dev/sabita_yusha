@@ -1,0 +1,33 @@
+# MUST BE INSTALLED TO ~/.config/systemd/ to operate
+#
+# - https://www.freedesktop.org/software/systemd/man/latest/systemd.unit.html#Unit%20File%20Load%20Path
+#
+#
+# Systemd uses specifiers listed at the below link in order to substitute
+# common values such as $HOME
+#
+# - https://www.freedesktop.org/software/systemd/man/latest/systemd.unit.html#Unit%20File%20Load%20Path
+#
+#
+# Unit definition can be found
+#
+# - https://www.freedesktop.org/software/systemd/man/latest/systemd.unit.html#Unit%20File%20Load%20Path
+#
+[Unit]
+Description="Configurable Macro Keyboard Handler"
+Documentation="https://github.com/rustysys-dev/sabita_yusha/tree/stg"
+# Service definition can be found
+#
+# - https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html#
+#
+[Service]
+Type=exec
+ExecStart="%h"/.local/bin/sabita_yusha
+# Watchdog might be useful in the future if the app ever starts to have
+# problems with freezing for any reason, however this requires additional
+# dbus related development.
+#
+# - https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html#WatchdogSec=
+#
+# WatchdogSec=
+Restart=always

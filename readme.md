@@ -24,3 +24,23 @@ For testing purposes it can be run using the following command
 ```
 go run .
 ```
+
+To officially install you can build the RPM:
+
+```
+go run cmd/package_app.go
+```
+
+And Install it.
+
+```
+sudo dnf install dist/*.rpm
+```
+
+Set to start on login (hyperland):
+
+```
+exec-once = sabita_yusha
+```
+
+Other window managers or desktop environments should have their own way to start scripts.

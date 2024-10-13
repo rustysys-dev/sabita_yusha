@@ -67,8 +67,8 @@ github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZN
 github.com/rogpeppe/go-internal v1.9.0/go.mod h1:WtVeX8xhTBvf0smdhujwtBcq4Qrzq/fJaraNFVN+nFs=
 github.com/rogpeppe/go-internal v1.11.0 h1:cWPaGQEPrBb5/AsnsZesgZZ9yb1OQ+GOISoDNXVBh4M=
 github.com/rogpeppe/go-internal v1.11.0/go.mod h1:ddIwULY96R17DhadqLgMfk9H9tvdUzkipdSkR5nkCZA=
-github.com/rustysys-dev/rpmbuild v0.0.2 h1:1TPIcRwJDoxDCllM+jaObnP6RGfklkVyji1hoEtdCyg=
-github.com/rustysys-dev/rpmbuild v0.0.2/go.mod h1:+ynLNNqordRn9QA/y9AiZjsxvNZBywYa4o836U0WTJA=
+github.com/rustysys-dev/rpmbuild v0.0.3 h1:jdqoIILHRua+d2RBbYUzfi6vLTdXtvtxIGuK4cMpTLg=
+github.com/rustysys-dev/rpmbuild v0.0.3/go.mod h1:+ynLNNqordRn9QA/y9AiZjsxvNZBywYa4o836U0WTJA=
 github.com/sergi/go-diff v1.1.0 h1:we8PVUC3FE2uYfodKH/nBHMSetSfHDR6scGdBi+erh0=
 github.com/sergi/go-diff v1.1.0/go.mod h1:STckp+ISIX8hZLjrqAeVduY0gWCT9IjLuqbuNXdaHfM=
 github.com/slack-go/slack v0.14.0 h1:6c0UTfbRnvRssZUsZ2qe0Iu07VAMPjRqOa6oX8ewF4k=

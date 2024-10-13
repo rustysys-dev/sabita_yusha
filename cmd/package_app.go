@@ -27,15 +27,25 @@ var app = rpmbuild.Builder{
 		}},
 	},
 
+	Scripts: rpmbuild.Scripts{
+		PreTransact:   "",
+		PostTransact:  "",
+		PreInstall:    "",
+		PostInstall:   "",
+		PreUninstall:  "",
+		PostUninstall: "",
+	},
+
 	Files: []rpmbuild.PackageFile{
 		{
 			Source:      "bin/sabita_yusha",
 			Destination: "/usr/bin/sabita_yusha",
 		},
-		{
-			Source:      "scripts/systemd/sabita_yusha.service",
-			Destination: "/usr/lib/systemd/user/sabita_yusha.service",
-		},
+		// REMOVED BUT GOOD TO KNOW IN THE FUTURE
+		//{
+		//	Source:      "scripts/systemd/sabita_yusha.service",
+		//	Destination: "/usr/lib/systemd/user/sabita_yusha.service",
+		//},
 	},
 }
 

@@ -19,28 +19,55 @@ This project assumes the user knows the name of the HID report which handles the
 
 ## Usage
 
-For testing purposes it can be run using the following command
+### Testing
+
+For testing purposes the application can be run to discover required information
+in order to properly config the app. Using the following command, you will be
+prompted to tap an appropriately configured button on your keyboard. If your
+device is properly configured you will be given the `target_device_name` for
+your config.
+
+```
+go run . -test
+```
+
+### Run
+
+To test run officially...
 
 ```
 go run .
 ```
 
-To officially install you can build the RPM:
+### Package / Install
+
+To officially install for RPM based environments:
 
 ```
+# edit this file as you see fit
 go run cmd/package_app.go
 ```
 
 And Install it.
 
+#### Fedora (dnf/yum)
+
 ```
 sudo dnf install dist/*.rpm
 ```
 
+### Auto-Start
+
+Various window managers and desktop environments have their ways of setting
+applications to automatically start, please reference your environment's
+documentation if it isn't listed here. Feel free to submit a request or PR
+to add your environment to this list.
+
+#### Hyperland
+
 Set to start on login (hyperland):
 
 ```
+# Add the following to $HOME/.config/hypr/hyprland.conf
 exec-once = sabita_yusha
 ```
-
-Other window managers or desktop environments should have their own way to start scripts.

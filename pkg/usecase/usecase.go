@@ -50,7 +50,6 @@ func New(cfg *entity.Config, isTest bool) (*App, error) {
 		cfg:    cfg,
 		wg:     wg,
 		cancel: func() {
-			fmt.Println("closed")
 			cancel()
 			conn.Close()
 		},

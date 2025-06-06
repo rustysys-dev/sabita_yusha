@@ -10,7 +10,7 @@ import (
 	"github.com/rustysys-dev/sabita_yusha/pkg/entity"
 )
 
-func (a *App) HandleUdevEvents(q chan netlink.UEvent) {
+func (a *UDevApp) HandleUdevEvents(q chan netlink.UEvent) {
 	// Handling message from queue Setup Tracking Var for DEVNAME
 	var evtDir string
 	for {
@@ -37,7 +37,7 @@ func (a *App) HandleUdevEvents(q chan netlink.UEvent) {
 	}
 }
 
-func (a *App) HandleDevInputEventFile(name string) error {
+func (a *UDevApp) HandleDevInputEventFile(name string) error {
 	log.Println("/// Begin Reading Events:", name, "///")
 	f, err := evdev.Open(name)
 	if err != nil {

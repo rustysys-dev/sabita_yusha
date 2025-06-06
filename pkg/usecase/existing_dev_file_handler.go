@@ -11,15 +11,15 @@ import (
 
 const MatchAny = ""
 
-func (a *App) HandleExistingTarget() {
+func (a *UDevApp) HandleExistingTarget() {
 	a.handleEVFiles(entity.EV_FILE_TYPE_EXEC, a.cfg.TargetDeviceName)
 }
 
-func (a *App) HandleSearchForMacroDevice() {
+func (a *UDevApp) HandleSearchForMacroDevice() {
 	a.handleEVFiles(entity.EV_FILE_TYPE_SEARCH, MatchAny)
 }
 
-func (a *App) handleEVFiles(runType entity.EVFileType, match string) error {
+func (a *UDevApp) handleEVFiles(runType entity.EVFileType, match string) error {
 	files, err := filepath.Glob("/dev/input/event*")
 	if err != nil {
 		return err

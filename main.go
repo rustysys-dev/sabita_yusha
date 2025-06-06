@@ -18,6 +18,7 @@ const (
 
 func main() {
 	isTest := flag.Bool("test", false, "defines whether to start the daemon, or print out udev input events")
+	command := flag.String("command", "", "defines the command to execute for CLI mode execution")
 	flag.Parse()
 
 	cfg, err := entity.GetConfig(filepath.Join(os.Getenv("HOME"), CONFIG_PATH))
@@ -25,7 +26,7 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	app, err := usecase.New(cfg, *isTest)
+	app, err := usecase.New(cfg, *command, *isTest)
 	if err != nil {
 		log.Fatalln(err)
 	}

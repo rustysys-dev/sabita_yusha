@@ -32,8 +32,10 @@ type Config struct {
 	//
 	// given that a given macro can have one or all of the
 	// handlers configured.
-	CustomMacro  []Macro       `yaml:"macros"`
-	CodeMacroMap map[int]Macro `yaml:"-"`
+	CustomMacro []Macro `yaml:"macros"`
+	// MacroMap arranges the macros by KEY_MACRO<number>
+	MacroMap     map[string]Macro `yaml:"-"`
+	CodeMacroMap map[int]Macro    `yaml:"-"`
 }
 
 func generateDefaultConfigFile(name string) (*Config, error) {
@@ -97,7 +99,7 @@ func GetConfig(name string) (*Config, error) {
 	return config, err
 }
 
-func (c *Config) UnmarshalYAML(unmarshal func(interface{}) error) error {
+func (c *Config) UnmarshalYAML(unmarshal func(any) error) error {
 	type configAlias Config
 	aux := configAlias(*c)
 	if err := unmarshal(&aux); err != nil {
@@ -109,13 +111,15 @@ func (c *Config) UnmarshalYAML(unmarshal func(interface{}) error) error {
 		codeMap["KEY_MACRO"+strconv.Itoa(i)] = val
 		val++
 	}
-	c.CodeMacroMap = make(map[int]Macro)
+	c.CodeMacroMap = make(map[int]Macro, len(c.CustomMacro))
+	c.MacroMap = make(map[string]Macro, len(c.CustomMacro))
 	for _, cmd := range c.CustomMacro {
 		code, ok := codeMap[cmd.Name]
 		if !ok {
 			continue
 		}
 		c.CodeMacroMap[code] = cmd
+		c.MacroMap[cmd.Name] = cmd
 	}
 	return nil
 }

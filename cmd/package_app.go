@@ -15,7 +15,7 @@ var app = rpmbuild.Builder{
 		Name:        "sabita_yusha",
 		Summary:     "Configurable `Programmable Button` execution daemon for VIA/QMK keyboards.",
 		Description: "runs programmable buttons for VIA/QMK keyboards via user config file. It is primarily built using the yushakobo Quick Paint keyboard, and while i imagine it should work with other keyboards compliant to QMK on Linux I cannot guarantee it.",
-		Version:     "2.0.0",
+		Version:     "3.0.0",
 		Release:     "1",
 		Arch:        "x86_64",
 		Packager:    "Scott Mattan <scott.mattan@rustysys.dev>",
@@ -23,7 +23,7 @@ var app = rpmbuild.Builder{
 		Compressor:  "zstd",
 		Provides: []*rpmpack.Relation{{
 			Name:    "sabita_yusha",
-			Version: "1.0.0",
+			Version: "2.0.0",
 		}},
 	},
 

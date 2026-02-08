@@ -9,6 +9,8 @@ This project implements the following features most of which are explained in th
 - Automatic Detection of Existing Target Keyboard
 - Automatic Detection of Adding / Removal of Target Keyboard
 - Automatic Config Generation When Non-existant
+- Automatic Systemd Service Registration (system-level)
+- In-place Binary Update via `-update` Flag
 - Execution of Handlers for Linux `KEY_MACRO1` ~ `KEY_MACRO30`
   - Bash Command Handler
   - Slack Message Command Handler
@@ -33,41 +35,37 @@ go run . -test
 
 ### Run
 
-To test run officially...
+On first run, the application will detect that it is not registered as a
+systemd service and prompt you to install it. This will:
+
+1. Copy the binary to `/usr/local/bin/sabita_yusha`
+2. Create a system-level systemd service at `/etc/systemd/system/sabita_yusha.service`
+3. Enable and start the service
+
+This requires `sudo` privileges. The service runs as the current user with
+`SupplementaryGroups=input`, so the user does not need to be in the `input`
+group themselves.
 
 ```
 go run .
 ```
 
-### Package / Install
+To skip the systemd registration prompt (e.g. for development), use the
+`-test` flag which bypasses the check entirely.
 
-To officially install for RPM based environments:
+### Update
 
-```
-# edit this file as you see fit
-go run cmd/package_app.go
-```
-
-And Install it.
-
-#### Fedora (dnf/yum)
+After rebuilding the binary, use the `-update` flag to replace the installed
+binary at `/usr/local/bin/sabita_yusha` and restart the systemd service:
 
 ```
-sudo dnf install dist/*.rpm
+go run . -update
 ```
 
-### Auto-Start
+### Flags
 
-Various window managers and desktop environments have their ways of setting
-applications to automatically start, please reference your environment's
-documentation if it isn't listed here. Feel free to submit a request or PR
-to add your environment to this list.
-
-#### Hyperland
-
-Set to start on login (hyperland):
-
-```
-# Add the following to $HOME/.config/hypr/hyprland.conf
-exec-once = sabita_yusha
-```
+| Flag | Description |
+|------|-------------|
+| `-test` | Run in device discovery mode, skips systemd registration |
+| `-update` | Update the installed binary and restart the systemd service |
+| `-systemd` | Used internally by the systemd service file, skips registration check |
